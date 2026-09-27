@@ -1,26 +1,27 @@
-name: Build APK
+[app]
+title = MC Browser
+package.name = mcbrowser
+package.domain = org.mcbrowser
 
-on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
+source.dir = .
+source.include_exts = py,png,jpg,kv,atlas
 
-jobs:
-  build:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+version = 1.0
 
-      - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v2
-        id: buildozer
-        with:
-          command: buildozer android debug
-          buildozer_version: stable
+requirements = python3,kivy,kivymd,pyjnius,android,kivy_garden.webview
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: mc-browser-apk
-          path: bin/*.apk
+orientation = portrait
+fullscreen = 0
+
+android.permissions = INTERNET
+
+android.api = 33
+android.minapi = 21
+android.ndk = 25b
+android.accept_sdk_license = True
+android.archs = arm64-v8a, armeabi-v7a
+
+[buildozer]
+log_level = 2
+warn_on_root = 1
+.apk
