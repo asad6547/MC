@@ -8,7 +8,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 1.0
 
-requirements = python3,kivy,kivymd,pyjnius,android,kivy_garden.webview
+requirements = python3,kivy,kivymd,pyjnius
 
 orientation = portrait
 fullscreen = 0
